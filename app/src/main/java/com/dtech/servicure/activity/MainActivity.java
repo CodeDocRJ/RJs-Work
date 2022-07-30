@@ -1,4 +1,4 @@
-package com.demoapp1;
+package com.dtech.servicure.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.dtech.R;
 import com.trafi.anchorbottomsheetbehavior.AnchorBottomSheetBehavior;
 
 public class MainActivity extends AppCompatActivity {

@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-<!--
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="350dp" />
--->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -72,7 +67,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgNote"
-            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
             android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
             android:textColor="@color/black"
             android:textSize="@dimen/_13ssp" />
@@ -128,7 +126,8 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/relTop">
+        android:layout_below="@+id/relTop"
+        android:layout_marginTop="0dp">
 
         <FrameLayout
             android:id="@+id/bottom_sheet"
@@ -145,7 +144,6 @@
                 android:layout_height="wrap_content" />
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 
 </RelativeLayout>

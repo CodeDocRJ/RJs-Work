@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#004F9E</color>
     <color name="colorAccent">#50A8FF</color>
 
-    <!--<color name="color_light_theme">#F5FCFF</color>-->
-    <color name="color_light_theme">#C6EEFF</color>
+    <color name="color_light_theme">#F5FCFF</color>
+    <!--<color name="color_light_theme">#C6EEFF</color>-->
 
 
     <color name="purple_200">#FFBB86FC</color>

@@ -1,4 +1,4 @@
-package com.demoapp1;
+package com.dtech;
 
 import org.junit.Test;
 

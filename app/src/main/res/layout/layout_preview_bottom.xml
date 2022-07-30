@@ -58,8 +58,8 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:layout_width="@dimen/_45sdp"
-                        android:layout_height="@dimen/_45sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_camera" />
                 </RelativeLayout>
@@ -70,8 +70,8 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:layout_width="@dimen/_45sdp"
-                        android:layout_height="@dimen/_45sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_camera" />
                 </RelativeLayout>
@@ -82,8 +82,8 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:layout_width="@dimen/_45sdp"
-                        android:layout_height="@dimen/_45sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_camera" />
                 </RelativeLayout>
@@ -100,8 +100,8 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:layout_width="@dimen/_45sdp"
-                        android:layout_height="@dimen/_45sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_camera" />
                 </RelativeLayout>
@@ -112,8 +112,8 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:layout_width="@dimen/_45sdp"
-                        android:layout_height="@dimen/_45sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_camera" />
                 </RelativeLayout>
@@ -124,8 +124,8 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:layout_width="@dimen/_45sdp"
-                        android:layout_height="@dimen/_45sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_camera" />
                 </RelativeLayout>
