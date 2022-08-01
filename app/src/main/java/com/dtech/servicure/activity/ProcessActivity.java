@@ -10,24 +10,30 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.dtech.R;
+import com.dtech.databinding.ActivityLoginBinding;
+import com.dtech.databinding.ActivityProcessBinding;
 import com.trafi.anchorbottomsheetbehavior.AnchorBottomSheetBehavior;
 
-public class MainActivity extends AppCompatActivity {
+public class ProcessActivity extends AppCompatActivity {
 
+    private ActivityProcessBinding binding;
+    private ProcessActivity activity;
     AnchorBottomSheetBehavior<FrameLayout> behaviour;
     private int displayHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityProcessBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        activity = this;
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         displayHeight = displayMetrics.heightPixels;
 
 
         Log.i("SIZE__", "onCreate() displayHeight==> " + displayHeight);
-        float totalDp = convertPixelsToDp(displayHeight, MainActivity.this);
+        float totalDp = convertPixelsToDp(displayHeight, ProcessActivity.this);
         Log.i("SIZE__", "onCreate() totalDp==> " + totalDp);
 
         behaviour = AnchorBottomSheetBehavior.from((FrameLayout) findViewById(R.id.bottom_sheet));
@@ -37,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         behaviour.setState(AnchorBottomSheetBehavior.STATE_COLLAPSED);
         manageBottomBehaviour();
 
-        findViewById(R.id.imgBack).setOnClickListener(new View.OnClickListener() {
+        binding.imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

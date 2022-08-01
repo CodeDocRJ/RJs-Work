@@ -37,8 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.linHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(activity, ProcessActivity.class);
+//                startActivity(intent);
             }
         });
 

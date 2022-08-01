@@ -14,18 +14,22 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name="com.dtech.servicure.activity.HomeActivity"
+            android:name="com.dtech.servicure.activity.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".servicure.activity.MainActivity"
+            android:name=".servicure.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".servicure.activity.ProcessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".servicure.activity.HomeActivity"
             android:screenOrientation="portrait" />
 
     </application>
