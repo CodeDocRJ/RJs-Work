@@ -7,8 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dtech.databinding.ActivityHomeBinding;
-import com.dtech.databinding.ActivityLoginBinding;
+import com.dtech.servicure.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
 

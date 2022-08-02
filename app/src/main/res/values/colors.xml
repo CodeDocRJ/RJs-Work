@@ -9,6 +9,7 @@
 
     <color name="color_dim_blue">#9AA8C7</color>
     <color name="color_grey">#80000000</color>
+    <color name="color_grey_unselected">#ADADAF</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

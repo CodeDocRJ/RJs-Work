@@ -19,49 +19,55 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:id="@+id/imgOnHand"
-            android:layout_width="@dimen/_45sdp"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:padding="@dimen/_4sdp"
-            android:src="@drawable/ic_on_hand" />
+            android:id="@+id/imgLogo"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_serv_logo_text" />
 
         <ImageView
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:padding="@dimen/_4sdp"
             android:src="@drawable/ic_profile" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <!--
+        <include
+            layout="@layout/fragment_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relTop" />
+    -->
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/relTop">
-
-
-    </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycPendings"
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_5sdp"
         android:layout_height="match_parent"
         android:layout_below="@+id/relTop"
-        tools:itemCount="50"
-        tools:listitem="@layout/item_pending" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+<!--
+    <fragment
+        android:id="@+id/fragment"
+        android:layout_below="@+id/relTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+-->
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardBottom"
         android:layout_width="match_parent"
-        app:cardBackgroundColor="@color/white"
         android:layout_height="@dimen/_65sdp"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_20sdp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_1sdp">
 
@@ -80,16 +86,19 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imgHome"
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:padding="@dimen/_4sdp"
-                    android:src="@drawable/ic_home_unsel" />
+                    android:src="@drawable/ic_home_sel" />
 
                 <TextView
+                    android:id="@+id/txtHome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
                     android:text="Home"
-                    android:textColor="@color/color_dim_blue"
+                    android:textColor="@color/color_blue"
                     android:textSize="@dimen/_11ssp" />
             </LinearLayout>
 
@@ -101,22 +110,23 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-<!--
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:padding="@dimen/_4sdp"
-                    android:src="@drawable/ic_" />
--->
+                <!--
+                                <ImageView
+                                    android:layout_width="@dimen/_30sdp"
+                                    android:layout_height="@dimen/_30sdp"
+                                    android:padding="@dimen/_4sdp"
+                                    android:src="@drawable/ic_" />
+                -->
 
                 <TextView
-                    android:layout_alignParentBottom="true"
+                    android:id="@+id/txtPendingClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:fontFamily="@font/roboto_medium"
                     android:text="Pending Pickup/Delivery"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_11ssp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/color_dim_blue"
+                    android:textSize="@dimen/_11ssp" />
 
             </RelativeLayout>
 
@@ -129,14 +139,17 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imgHistory"
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:padding="@dimen/_4sdp"
                     android:src="@drawable/ic_history_unsel" />
 
                 <TextView
+                    android:id="@+id/txtHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
                     android:text="History"
                     android:textColor="@color/color_dim_blue"
                     android:textSize="@dimen/_11ssp" />
@@ -150,32 +163,32 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_56sdp"
-        android:layout_marginBottom="@dimen/_minus28sdp"
         android:layout_above="@+id/cardBottom"
-        android:translationZ="@dimen/_2sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="@dimen/_25sdp"
-        android:layout_centerHorizontal="true">
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_marginBottom="@dimen/_minus28sdp"
+        android:translationZ="@dimen/_2sdp">
 
-<!--        <ImageView
-            android:id="@+id/imgRoundPending"
-            android:layout_width="@dimen/_56sdp"
-            android:layout_height="@dimen/_56sdp"
-            android:src="@drawable/ic_pending_sel" />-->
+        <!--        <ImageView
+                    android:id="@+id/imgRoundPending"
+                    android:layout_width="@dimen/_56sdp"
+                    android:layout_height="@dimen/_56sdp"
+                    android:src="@drawable/ic_pending_sel" />-->
 
         <ImageView
             android:id="@+id/imgRoundPending"
             android:layout_width="@dimen/_56sdp"
+            android:layout_height="@dimen/_56sdp"
             android:layout_centerHorizontal="true"
-            android:layout_height="@dimen/_56sdp"
-            android:src="@drawable/ic_pending_sel" />
+            android:src="@drawable/ic_pending_unsel" />
 
-   <!--     <ImageView
-            android:id="@+id/imgRoundPending"
-            android:layout_width="@dimen/_56sdp"
-            android:layout_height="@dimen/_56sdp"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_pending_sel" />-->
+        <!--     <ImageView
+                 android:id="@+id/imgRoundPending"
+                 android:layout_width="@dimen/_56sdp"
+                 android:layout_height="@dimen/_56sdp"
+                 android:layout_alignParentEnd="true"
+                 android:src="@drawable/ic_pending_sel" />-->
     </RelativeLayout>
 
 

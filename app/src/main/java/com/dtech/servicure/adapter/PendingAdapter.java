@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dtech.R;
-import com.dtech.databinding.ItemPendingBinding;
+import com.dtech.servicure.databinding.ItemForHomeBinding;
+import com.dtech.servicure.databinding.ItemForPendingBinding;
 import com.dtech.servicure.model.PendingModel;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemPendingBinding itemBinding = ItemPendingBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        ItemForPendingBinding itemBinding = ItemForPendingBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new MyViewHolder(itemBinding);
     }
 
@@ -57,9 +57,9 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private ItemPendingBinding binding;
+        private ItemForPendingBinding binding;
 
-        public MyViewHolder(@NonNull ItemPendingBinding itemBinding) {
+        public MyViewHolder(@NonNull ItemForPendingBinding itemBinding) {
             super(itemBinding.getRoot());
             this.binding = itemBinding;
         }

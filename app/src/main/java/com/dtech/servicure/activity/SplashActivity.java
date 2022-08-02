@@ -8,8 +8,8 @@ import android.os.Looper;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dtech.databinding.ActivityLoginBinding;
-import com.dtech.databinding.ActivitySplashBinding;
+import com.dtech.servicure.databinding.ActivityLoginBinding;
+import com.dtech.servicure.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -6,7 +6,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.demoapp1"
+        applicationId "com.dtech.servicure"
         minSdk 21
         targetSdk 32
         versionCode 1

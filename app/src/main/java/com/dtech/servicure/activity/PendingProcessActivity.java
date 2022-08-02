@@ -9,22 +9,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.dtech.R;
-import com.dtech.databinding.ActivityLoginBinding;
-import com.dtech.databinding.ActivityProcessBinding;
+import com.dtech.servicure.R;
+import com.dtech.servicure.databinding.ActivityPendingProcessBinding;
+import com.dtech.servicure.R;
+import com.dtech.servicure.databinding.ActivityPendingProcessBinding;
 import com.trafi.anchorbottomsheetbehavior.AnchorBottomSheetBehavior;
 
-public class ProcessActivity extends AppCompatActivity {
+public class PendingProcessActivity extends AppCompatActivity {
 
-    private ActivityProcessBinding binding;
-    private ProcessActivity activity;
+    private ActivityPendingProcessBinding binding;
+    private PendingProcessActivity activity;
     AnchorBottomSheetBehavior<FrameLayout> behaviour;
     private int displayHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityProcessBinding.inflate(getLayoutInflater());
+        binding = ActivityPendingProcessBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         activity = this;
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -33,7 +34,7 @@ public class ProcessActivity extends AppCompatActivity {
 
 
         Log.i("SIZE__", "onCreate() displayHeight==> " + displayHeight);
-        float totalDp = convertPixelsToDp(displayHeight, ProcessActivity.this);
+        float totalDp = convertPixelsToDp(displayHeight, PendingProcessActivity.this);
         Log.i("SIZE__", "onCreate() totalDp==> " + totalDp);
 
         behaviour = AnchorBottomSheetBehavior.from((FrameLayout) findViewById(R.id.bottom_sheet));

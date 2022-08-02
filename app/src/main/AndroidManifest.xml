@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.dtech">
+    package="com.dtech.servicure">
 
     <application
         android:allowBackup="true"
@@ -23,13 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".servicure.activity.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".servicure.activity.ProcessActivity"
+            android:name=".activity.PendingProcessActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".servicure.activity.HomeActivity"
+            android:name=".activity.HomeActivity"
             android:screenOrientation="portrait" />
 
     </application>
