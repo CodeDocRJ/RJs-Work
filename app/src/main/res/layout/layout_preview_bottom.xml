@@ -49,7 +49,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_height="@dimen/_55sdp"
                 android:layout_marginTop="@dimen/_15sdp">
 
                 <RelativeLayout
@@ -58,10 +58,20 @@
                     android:layout_weight="1">
 
                     <ImageView
+                        android:id="@+id/imgPick1"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_camera" />
+                        android:src="@drawable/ic_camera_place" />
+
+                    <ImageView
+                        android:id="@+id/imgCancel1"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginStart="@dimen/_minus10sdp"
+                        android:layout_toEndOf="@+id/imgPick1"
+                        android:src="@drawable/ic_cancel_image"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -70,10 +80,20 @@
                     android:layout_weight="1">
 
                     <ImageView
+                        android:id="@+id/imgPick2"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_camera" />
+                        android:src="@drawable/ic_camera_place" />
+
+                    <ImageView
+                        android:id="@+id/imgCancel2"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginStart="@dimen/_minus10sdp"
+                        android:layout_toEndOf="@+id/imgPick2"
+                        android:src="@drawable/ic_cancel_image"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -82,16 +102,26 @@
                     android:layout_weight="1">
 
                     <ImageView
+                        android:id="@+id/imgPick3"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_camera" />
+                        android:src="@drawable/ic_camera_place" />
+
+                    <ImageView
+                        android:id="@+id/imgCancel3"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginStart="@dimen/_minus10sdp"
+                        android:layout_toEndOf="@+id/imgPick3"
+                        android:src="@drawable/ic_cancel_image"
+                        android:visibility="gone" />
                 </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_height="@dimen/_55sdp"
                 android:layout_marginTop="@dimen/_15sdp">
 
                 <RelativeLayout
@@ -100,10 +130,20 @@
                     android:layout_weight="1">
 
                     <ImageView
+                        android:id="@+id/imgPick4"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_camera" />
+                        android:src="@drawable/ic_camera_place" />
+
+                    <ImageView
+                        android:id="@+id/imgCancel4"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginStart="@dimen/_minus10sdp"
+                        android:layout_toEndOf="@+id/imgPick4"
+                        android:src="@drawable/ic_cancel_image"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -112,10 +152,20 @@
                     android:layout_weight="1">
 
                     <ImageView
+                        android:id="@+id/imgPick5"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_camera" />
+                        android:src="@drawable/ic_camera_place" />
+
+                    <ImageView
+                        android:id="@+id/imgCancel5"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginStart="@dimen/_minus10sdp"
+                        android:layout_toEndOf="@+id/imgPick5"
+                        android:src="@drawable/ic_cancel_image"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -124,10 +174,20 @@
                     android:layout_weight="1">
 
                     <ImageView
+                        android:id="@+id/imgPick6"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_camera" />
+                        android:src="@drawable/ic_camera_place" />
+
+                    <ImageView
+                        android:id="@+id/imgCancel6"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginStart="@dimen/_minus10sdp"
+                        android:layout_toEndOf="@+id/imgPick6"
+                        android:src="@drawable/ic_cancel_image"
+                        android:visibility="gone" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -137,7 +197,7 @@
                 android:layout_marginTop="@dimen/_30sdp"
                 android:gravity="center_vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="@dimen/_135sdp"
                     android:layout_height="@dimen/_27sdp"
                     android:layout_alignParentEnd="true"
@@ -154,17 +214,18 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/relGetSign"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_110sdp"
                 android:layout_margin="@dimen/_15sdp"
                 android:background="@drawable/bg_sign_box">
 
                 <ImageView
+                    android:id="@+id/imgSign"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_60sdp"
                     android:layout_centerInParent="true"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_sign" />
+                    android:adjustViewBounds="true" />
 
             </RelativeLayout>
 
@@ -275,8 +336,8 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:hint="Enter OTP"
-                    android:paddingStart="@dimen/_10sdp"
                     android:inputType="number"
+                    android:paddingStart="@dimen/_10sdp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/color_hint"
                     android:textSize="@dimen/_14ssp" />
@@ -381,19 +442,19 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:text="User not have online payment then click here and pay from home your account"
-                    android:textSize="@dimen/_12ssp"
-                    android:textColor="@color/black"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="User not have online payment then click here and pay from home your account"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/bg_blue_4"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:paddingStart="@dimen/_13sdp"
                     android:paddingEnd="@dimen/_13sdp"
                     android:text="Click to Pay"
@@ -434,9 +495,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/bg_blue_4"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:paddingStart="@dimen/_13sdp"
                     android:paddingEnd="@dimen/_13sdp"
                     android:text="Save Details"

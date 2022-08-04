@@ -1,13 +1,16 @@
 package com.dtech.servicure.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dtech.servicure.activity.PendingProcessActivity;
 import com.dtech.servicure.databinding.ItemForHomeBinding;
 import com.dtech.servicure.databinding.ItemForPendingBinding;
 import com.dtech.servicure.model.PendingModel;
@@ -49,6 +52,14 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
             params.setMargins(margin8, margin5, margin8, margin5);
             holder.binding.linMain.setLayoutParams(params);
         }
+
+        holder.binding.linMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, PendingProcessActivity.class);
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dtech.servicure">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -31,6 +35,9 @@
         <activity
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TakeSignActivity"
+            android:screenOrientation="landscape" />
 
     </application>
 

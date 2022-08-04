@@ -31,8 +31,8 @@
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:padding="@dimen/_4sdp"
             android:src="@drawable/ic_profile" />
     </RelativeLayout>
 
@@ -139,6 +139,7 @@
             app:layout_behavior="com.trafi.anchorbottomsheetbehavior.AnchorBottomSheetBehavior">
 
             <include
+                android:id="@+id/incProcess"
                 layout="@layout/layout_preview_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
