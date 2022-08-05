@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:waveview="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingBottom="@dimen/_10sdp">
 
@@ -260,6 +261,7 @@
                 android:layout_marginEnd="@dimen/_15sdp">
 
                 <ImageView
+                    android:id="@+id/imgDeleteRecorded"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_centerVertical="true"
@@ -273,11 +275,12 @@
                     android:src="@drawable/ic_rec" />
 
                 <ImageView
+                    android:id="@+id/imgPlayRecorded"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_delete" />
+                    android:src="@drawable/ic_play" />
 
             </RelativeLayout>
 
@@ -289,14 +292,12 @@
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:background="@drawable/bg_sign_box">
 
-                <ImageView
+                <com.shuyu.waveview.AudioWaveView
+                    android:id="@+id/audioWave"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_waves" />
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5sdp"/>
+
 
             </RelativeLayout>
 

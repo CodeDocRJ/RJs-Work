@@ -4,12 +4,12 @@ public class PendingModel {
 
     private String name;
     private String date;
-    private boolean isOpen;
+    private boolean isExpanded;
 
-    public PendingModel(String name, String date, boolean isOpen) {
+    public PendingModel(String name, String date, boolean isExpanded) {
         this.name = name;
         this.date = date;
-        this.isOpen = isOpen;
+        this.isExpanded = isExpanded;
     }
 
     public String getName() {
@@ -28,11 +28,11 @@ public class PendingModel {
         this.date = date;
     }
 
-    public boolean isOpen() {
-        return isOpen;
+    public boolean isExpanded() {
+        return isExpanded;
     }
 
-    public void setOpen(boolean open) {
-        isOpen = open;
+    public void setExpanded(boolean expanded) {
+        isExpanded = expanded;
     }
 }

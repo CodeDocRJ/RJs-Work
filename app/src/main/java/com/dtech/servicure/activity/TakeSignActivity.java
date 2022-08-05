@@ -34,7 +34,7 @@ public class TakeSignActivity extends AppCompatActivity {
         activity = this;
 
         binding.signatureView.setPathColor(Color.BLACK);
-        binding.signatureView.setWidth(300.0);
+        binding.signatureView.setWidth(400.0);
 
         binding.signatureView.signatureClear();
         File file = new File(MyFileUtils.getImageFile(activity), "image_sign.png");

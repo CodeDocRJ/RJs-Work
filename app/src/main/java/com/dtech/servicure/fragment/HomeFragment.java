@@ -26,6 +26,9 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private HomeActivity activity;
 
+    public HomeFragment() {
+    }
+
     public HomeFragment(HomeActivity activity) {
         this.activity = activity;
     }
@@ -44,7 +47,7 @@ public class HomeFragment extends Fragment {
 
         binding.recycHome.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.VERTICAL, false));
         ArrayList<PendingModel> pendingModels = HomeActivity.activity.getList();
-        HomeAdapter homeAdapter = new HomeAdapter(activity, pendingModels);
+        HomeAdapter homeAdapter = new HomeAdapter(activity, pendingModels, binding.recycHome);
         binding.recycHome.setAdapter(homeAdapter);
 
         setSelected(0);

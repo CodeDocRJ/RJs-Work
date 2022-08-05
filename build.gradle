@@ -1,8 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+
+    dependencies {
+//        classpath 'com.android.tools.build:gradle:3.3.0'
+
+//        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.2.1' apply false
     id 'com.android.library' version '7.2.1' apply false
+//    id 'com.novoda.bintray-release' version '0.8.0' apply true
 }
+apply from: 'dependencies.gradle'
 
 task clean(type: Delete) {
     delete rootProject.buildDir

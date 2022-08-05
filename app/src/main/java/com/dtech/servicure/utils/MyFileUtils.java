@@ -13,7 +13,7 @@ import java.util.Date;
 public class MyFileUtils {
 
     public static String getDirectory(Context context, String string) {
-        File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), string);
+        File file = new File(context.getExternalFilesDir(null), string);
         if (!file.exists()) {
             file.mkdirs();
         }
@@ -44,5 +44,14 @@ public class MyFileUtils {
             file.mkdirs();
         }
         return file;
+    }
+
+    public static String getAudioPath(Context context) {
+        String string = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(string);
+        stringBuilder.append(".mp3");
+        String string2 = stringBuilder.toString();
+        return new File(getDirectory(context, "My Recordings"), string2).getAbsolutePath();
     }
 }

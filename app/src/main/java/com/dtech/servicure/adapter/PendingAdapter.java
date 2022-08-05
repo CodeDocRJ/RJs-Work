@@ -1,5 +1,6 @@
 package com.dtech.servicure.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.dtech.servicure.activity.PendingProcessActivity;
 import com.dtech.servicure.databinding.ItemForHomeBinding;
 import com.dtech.servicure.databinding.ItemForPendingBinding;
 import com.dtech.servicure.model.PendingModel;
+import com.dtech.servicure.utils.Animations;
 
 import java.util.ArrayList;
 
@@ -21,6 +23,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
 
     private Activity activity;
     private ArrayList<PendingModel> pendingModels = new ArrayList<>();
+    private int mExpandedPosition = -1;
 
     public PendingAdapter(Activity activity, ArrayList<PendingModel> pendingModels) {
         this.activity = activity;
@@ -35,7 +38,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         PendingModel currData = pendingModels.get(position);
 
         holder.binding.txtName.setText(currData.getName());
@@ -60,6 +63,31 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
                 activity.startActivity(intent);
             }
         });
+
+        if (position == mExpandedPosition) {
+            holder.binding.linProcess.setVisibility(View.VISIBLE);
+        } else {
+            holder.binding.linProcess.setVisibility(View.GONE);
+        }
+
+        holder.binding.imgExpand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean show = toggleLayout(!pendingModels.get(position).isExpanded(), view, holder.binding.linProcess, position);
+                pendingModels.get(position).setExpanded(show);
+            }
+        });
+    }
+
+    private boolean toggleLayout(boolean isExpanded, View v, LinearLayout layoutExpand, int position) {
+        Animations.toggleArrow(v, isExpanded);
+        if (isExpanded) {
+            Animations.expand(layoutExpand);
+            mExpandedPosition = position;
+        } else {
+            Animations.collapse(layoutExpand);
+        }
+        return isExpanded;
     }
 
     @Override

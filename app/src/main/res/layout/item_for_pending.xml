@@ -1,60 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linMain"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_65sdp"
+    android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/_8sdp"
     android:layout_marginTop="@dimen/_5sdp"
     android:layout_marginEnd="@dimen/_8sdp"
     android:layout_marginBottom="@dimen/_5sdp"
     android:background="@drawable/bg_pending"
-    android:orientation="horizontal"
-    android:paddingStart="@dimen/_9sdp"
-    android:paddingTop="@dimen/_12sdp"
-    android:paddingEnd="@dimen/_9sdp"
-    android:paddingBottom="@dimen/_12sdp">
+    android:orientation="vertical">
 
-    <View
-        android:layout_width="@dimen/_2sdp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:background="@color/colorPrimary" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:id="@+id/linMain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_65sdp"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/_9sdp"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_9sdp"
+        android:paddingBottom="@dimen/_12sdp">
 
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="USer Name"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_13ssp"
-            android:textStyle="bold" />
+        <View
+            android:layout_width="@dimen/_2sdp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorPrimary" />
 
-        <TextView
-            android:id="@+id/txtDate"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:text="07:15, 03/06/2022"
-            android:textColor="@color/color_dim_blue"
-            android:textSize="@dimen/_12ssp" />
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="USer Name"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="07:15, 03/06/2022"
+                android:textColor="@color/color_dim_blue"
+                android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgExpand"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:padding="@dimen/_1sdp"
+            android:src="@drawable/ic_arrow_down" />
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="@dimen/_25sdp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:padding="@dimen/_1sdp"
-        android:src="@drawable/ic_arrow_down" />
+    <LinearLayout
+        android:id="@+id/linProcess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_10sdp"
+        android:visibility="gone">
+
+        <LinearLayout style="@style/linDetail">
+
+            <TextView
+                style="@style/txtTitle"
+                android:text="Claim ID : " />
+
+            <TextView
+                style="@style/txtValue"
+                android:text="1982255424754" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/linDetail">
+
+            <TextView
+                style="@style/txtTitle"
+                android:text="Name : " />
+
+            <TextView
+                style="@style/txtValue"
+                android:text="Rutvik" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/linDetail">
+
+            <TextView
+                style="@style/txtTitle"
+                android:text="City : " />
+
+            <TextView
+                style="@style/txtValue"
+                android:text="Surat" />
+
+        </LinearLayout>
+
+        <RelativeLayout style="@style/linDetail">
+
+            <TextView
+                android:id="@+id/txtContactTitle"
+                style="@style/txtTitle"
+                android:text="Contact No : " />
+
+            <TextView
+                style="@style/txtValue"
+                android:layout_toEndOf="@+id/txtContactTitle"
+                android:text="1982255424754" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/_1sdp"
+                android:src="@drawable/ic_call_only" />
+
+        </RelativeLayout>
+
+        <LinearLayout style="@style/linDetail">
+
+            <TextView
+                style="@style/txtTitle"
+                android:text="SI Value : " />
+
+            <TextView
+                style="@style/txtValue"
+                android:text="50000" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/linDetail">
+
+            <TextView
+                style="@style/txtTitle"
+                android:text="IMEI : " />
+
+            <TextView
+                style="@style/txtValue"
+                android:text="0545405455454545" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/linDetail">
+
+            <TextView
+                style="@style/txtTitle"
+                android:text="Charges : " />
+
+            <TextView
+                style="@style/txtValue"
+                android:text="Paid"
+                android:textColor="@color/green" />
+
+            <TextView
+                style="@style/txtValue"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="UnPaid"
+                android:textColor="@color/red" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
