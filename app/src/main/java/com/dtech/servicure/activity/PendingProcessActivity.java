@@ -2,10 +2,10 @@ package com.dtech.servicure.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -37,8 +38,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 public class PendingProcessActivity extends AppCompatActivity implements MP3RadioStreamDelegate {
 
@@ -58,12 +57,12 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
     boolean isPermissionGiven = false;
     String filePath1 = "", filePath2 = "", filePath3 = "", filePath4 = "", filePath5 = "", filePath6 = "";
     /**/
-    private String filePath;
+    private String recFilePath;
     MP3Recorder mRecorder;
-    boolean mIsRecord = false;
+    boolean isRecording = false;
     boolean isHasFile = false;
     MP3RadioStreamPlayer player;
-    private boolean isPlaying;
+    private boolean isPlaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +96,8 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
         if (isWriteReadPermission()) {
             isPermissionGiven = true;
         }
+
+        setRecToInitUI();
 
         binding.incProcess.imgPick1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,31 +238,45 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
         binding.incProcess.imgDeleteRecorded.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (filePath != null && new File(filePath).exists()) {
-                    boolean isDeleted = new File(filePath).delete();
-                    Log.i("AUDIO__", "DELETED ?  " + isDeleted);
-                    if (isDeleted) {
-                        Toast.makeText(activity, "Audio deleted successfully.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(activity, "Something went wrong while deleting file.", Toast.LENGTH_SHORT).show();
-                    }
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                builder.setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if (recFilePath != null && new File(recFilePath).exists()) {
+                                    boolean isDeleted = new File(recFilePath).delete();
+                                    Log.i("AUDIO__", "DELETED ?  " + isDeleted);
+                                    if (isDeleted) {
+                                        setRecToInitUI();
+                                        binding.incProcess.imgRecord.setVisibility(View.VISIBLE);
+                                        isHasFile = false;
+                                        recFilePath = "";
+                                        binding.incProcess.audioWave.stopView();
+                                        Toast.makeText(activity, "Audio deleted successfully.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(activity, "Something went wrong while deleting file.", Toast.LENGTH_SHORT).show();
+                                    }
+                                    dialogInterface.dismiss();
+                                }
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
         binding.incProcess.imgRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isPlaying) {
-                    player.stop();
-                    player.release();
-                    player = null;
-                    isPlaying = false;
-                }
-                if (mIsRecord) {
-                    resolveStopRecord();
+                if (isRecording) {
+                    stopRecord();
                 } else {
                     if (isWriteRecordPermission()) {
-                        resolveRecord();
+                        startRecord();
                     }
                 }
             }
@@ -269,15 +284,20 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
         binding.incProcess.imgPlayRecorded.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isHasFile) {
+                if (isPlaying) {
+                    if (player != null) {
+                        player.setPause(true);
+                        isPlaying = false;
+                        binding.incProcess.imgPlayRecorded.setImageResource(R.drawable.ic_music_play);
+                        binding.incProcess.audioWave.stopView();
+                    }
+                } else /*if (isHasFile)*/ {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             play();
                         }
                     }, 500);
-                } else {
-                    Toast.makeText(activity, "You have to record first!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -285,23 +305,16 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
 
     }
 
-    private void resolveRecord() {
-        /*filePath = FileUtils.getAppPath();*/
-        /*filePath = MyFileUtils.getAudioPath(activity);
-        Log.i("AUDIO__", "resolveRecord() " + filePath);
-        File file = new File(filePath);
-        if (!file.exists()) {
-            if (!file.mkdirs()) {
-                Toast.makeText(activity, "Failed to create file", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }*/
+    private void setRecToInitUI() {
+        binding.incProcess.imgDeleteRecorded.setVisibility(View.GONE);
+        binding.incProcess.imgPlayRecorded.setVisibility(View.GONE);
+    }
 
+    private void startRecord() {
         int offset = dip2px(activity, 1);
-//        filePath = FileUtils.getAppPath() + UUID.randomUUID().toString() + ".mp3";
-        filePath = MyFileUtils.getAudioPath(activity);
-        Log.i("AUDIO__", "resolveRecord() " + filePath);
-        mRecorder = new MP3Recorder(new File(filePath));
+        recFilePath = MyFileUtils.getAudioPath(activity);
+        Log.i("AUDIO__", "resolveRecord() " + recFilePath);
+        mRecorder = new MP3Recorder(new File(recFilePath));
         int size = getScreenWidth(activity) / offset;//控件默认的间隔是1
         mRecorder.setDataList(binding.incProcess.audioWave.getRecList(), size);
 
@@ -343,37 +356,28 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
             resolveError();
             return;
         }
-        resolveRecordUI();
-        mIsRecord = true;
+        isRecording = true;
+        binding.incProcess.imgRecord.setImageResource(R.drawable.ic_mic_pause);
     }
 
-    private void resolveStopRecord() {
-        resolveStopUI();
+
+    private void stopRecord() {
         if (mRecorder != null && mRecorder.isRecording()) {
             mRecorder.setPause(false);
             mRecorder.stop();
             binding.incProcess.audioWave.stopView();
         }
         isHasFile = true;
-        mIsRecord = false;
-    }
-
-    private void resolveStopUI() {
-        binding.incProcess.imgRecord.setImageResource(R.drawable.ic_rec);
-    }
-
-    private void resolveRecordUI() {
-        binding.incProcess.imgRecord.setImageResource(R.drawable.ic_camera_place);
-    }
-
-    private void resolveNormalUI() {
-        binding.incProcess.imgRecord.setImageResource(R.drawable.ic_rec);
+        isRecording = false;
+        binding.incProcess.imgRecord.setImageResource(R.drawable.ic_rec_mic);
+        binding.incProcess.imgDeleteRecorded.setVisibility(View.VISIBLE);
+        binding.incProcess.imgPlayRecorded.setVisibility(View.VISIBLE);
+        binding.incProcess.imgRecord.setVisibility(View.GONE);
     }
 
     private void resolveError() {
-        resolveNormalUI();
-        FileUtils.deleteFile(filePath);
-        filePath = "";
+        FileUtils.deleteFile(recFilePath);
+        recFilePath = "";
         if (mRecorder != null && mRecorder.isRecording()) {
             mRecorder.stop();
             binding.incProcess.audioWave.stopView();
@@ -393,6 +397,8 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
     }
 
     private void play() {
+        int offset = dip2px(activity, 1);
+
         if (player != null) {
             player.stop();
             player.release();
@@ -400,7 +406,7 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
         }
         player = new MP3RadioStreamPlayer();
         //player.setUrlString(this, true, "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2005.mp3");
-        player.setUrlString(filePath);
+        player.setUrlString(recFilePath);
         player.setDelegate(this);
 
         int size = getScreenWidth(this) / dip2px(this, 1);//控件默认的间隔是1
@@ -409,10 +415,12 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
         //mRecorder.setDataList(audioWave.getRecList(), size);
         //player.setStartWaveTime(5000);
         //audioWave.setDrawBase(false);
+        //custom paint
         Paint paint = new Paint();
         paint.setColor(getResources().getColor(R.color.color_blue));
         paint.setStrokeWidth(4);
         binding.incProcess.audioWave.setLinePaint(paint);
+        binding.incProcess.audioWave.setOffset(offset);
 
         binding.incProcess.audioWave.setBaseRecorder(player);
         binding.incProcess.audioWave.startView();
@@ -420,6 +428,7 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
         try {
             player.play();
             isPlaying = true;
+            binding.incProcess.imgPlayRecorded.setImageResource(R.drawable.ic_music_pause);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -627,7 +636,7 @@ public class PendingProcessActivity extends AppCompatActivity implements MP3Radi
                 }
             }
             if (isWrite && isRecord) {
-                resolveRecord();
+                startRecord();
             }
         }
     }

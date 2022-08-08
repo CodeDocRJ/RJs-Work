@@ -1,11 +1,14 @@
 package com.dtech.servicure.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.dtech.servicure.R;
@@ -14,13 +17,14 @@ import com.dtech.servicure.databinding.ActivityHomeBinding;
 import com.dtech.servicure.fragment.HistoryFragment;
 import com.dtech.servicure.fragment.HomeFragment;
 import com.dtech.servicure.fragment.PendingFragment;
+import com.dtech.servicure.fragment.ProfileFragment;
 import com.dtech.servicure.model.PendingModel;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ActivityHomeBinding binding;
+    public static ActivityHomeBinding binding;
     public static HomeActivity activity;
 
     private ViewPagerAdapter viewPagerAdapter;
@@ -57,6 +61,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        binding.imgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.fragmentProfile.setVisibility(View.VISIBLE);
+                binding.viewpager.setVisibility(View.GONE);
+                setFragment(new ProfileFragment(activity));
+            }
+        });
 
         binding.linHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,11 +100,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    /*protected void setFragment(Fragment fragment) {
+    private void setFragment(Fragment fragment) {
         FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-        t.replace(R.id.fragment, fragment);
+        t.replace(R.id.fragmentProfile, fragment);
         t.commit();
-    }*/
+    }
 
     private void setSelected(int position) {
         binding.imgHome.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_home_unsel));
@@ -114,6 +126,15 @@ public class HomeActivity extends AppCompatActivity {
             binding.imgHistory.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_history_sel));
             binding.txtHistory.setTextColor(activity.getResources().getColor(R.color.color_blue));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (binding.fragmentProfile.getVisibility() == View.VISIBLE) {
+            ProfileFragment.binding.imgBack.performClick();
+            return;
+        }
+        super.onBackPressed();
     }
 
     public ArrayList<PendingModel> getList() {

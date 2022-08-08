@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_15sdp"
+        app:cardElevation="0dp"
+        android:elevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_15sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Add Note"
+                android:textColor="@color/color_blue"
+                android:textSize="@dimen/_17ssp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit_stroke"
+                android:padding="@dimen/_10sdp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="start"
+                    android:hint="Note"
+                    android:minLines="4"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color_grey"
+                    android:textSize="@dimen/_15ssp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_blue_4"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingStart="@dimen/_25sdp"
+                android:paddingTop="@dimen/_7sdp"
+                android:paddingEnd="@dimen/_25sdp"
+                android:paddingBottom="@dimen/_7sdp"
+                android:text="Send"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

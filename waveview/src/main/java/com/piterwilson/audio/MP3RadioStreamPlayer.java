@@ -614,7 +614,7 @@ public class MP3RadioStreamPlayer extends BaseRecorder {
     }
 
     /**
-     * 暂停
+     * pause
      */
     public void setPause(boolean pause) {
         this.pause = pause;
