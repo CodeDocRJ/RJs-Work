@@ -15,10 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dtech.servicure.R;
 import com.dtech.servicure.activity.HomeActivity;
-import com.dtech.servicure.adapter.HomeAdapter;
 import com.dtech.servicure.adapter.PendingAdapter;
 import com.dtech.servicure.databinding.FragmentHistoryBinding;
-import com.dtech.servicure.model.PendingModel;
 
 import java.util.ArrayList;
 
@@ -41,11 +39,12 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.i("CHECK_STATE__", "onViewCreated() HistoryFragment.class " );
 
-        binding.recycHistory.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.VERTICAL, false));
+        /*binding.recycHistory.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.VERTICAL, false));
         ArrayList<PendingModel> pendingModels = HomeActivity.activity.getList();
         PendingAdapter homeAdapter = new PendingAdapter(activity, pendingModels);
-        binding.recycHistory.setAdapter(homeAdapter);
+        binding.recycHistory.setAdapter(homeAdapter);*/
 
         setSelected(0);
 

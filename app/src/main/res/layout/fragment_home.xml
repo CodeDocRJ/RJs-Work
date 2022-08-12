@@ -82,11 +82,21 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycHome"
+        android:id="@+id/recycHomePickUp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/cardTab"
         android:layout_marginTop="@dimen/_5sdp"
+        tools:itemCount="50"
+        tools:listitem="@layout/item_for_home" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycHomeDeliv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cardTab"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:visibility="gone"
         tools:itemCount="50"
         tools:listitem="@layout/item_for_home" />
 

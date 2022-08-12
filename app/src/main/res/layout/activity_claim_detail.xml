@@ -63,6 +63,7 @@
                     android:src="@drawable/ic_note_whole" />
 
                 <TextView
+                    android:id="@+id/txtNoteTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignBottom="@+id/imgNote"
@@ -74,6 +75,7 @@
                     android:textSize="@dimen/_10ssp" />
 
                 <TextView
+                    android:id="@+id/txtNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imgNote"
@@ -124,6 +126,7 @@
                         android:src="@drawable/ic_location" />
 
                     <TextView
+                        android:id="@+id/txtAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_20sdp"
@@ -210,6 +213,7 @@
                         android:layout_weight="1">
 
                         <LinearLayout
+                            android:id="@+id/linReject"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_10sdp"

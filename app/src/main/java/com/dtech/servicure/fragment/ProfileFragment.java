@@ -38,7 +38,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 HomeActivity.binding.fragmentProfile.setVisibility(View.GONE);
-                HomeActivity.binding.viewpager.setVisibility(View.VISIBLE);
+//                HomeActivity.binding.viewpager.setVisibility(View.VISIBLE);
+                HomeActivity.binding.frameLayout.setVisibility(View.VISIBLE);
             }
         });
 

@@ -12,23 +12,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dtech.servicure.activity.PendingProcessActivity;
-import com.dtech.servicure.databinding.ItemForHomeBinding;
 import com.dtech.servicure.databinding.ItemForPendingBinding;
-import com.dtech.servicure.model.PendingModel;
+import com.dtech.servicure.model.home.BikerRequest;
+import com.dtech.servicure.model.pending.BikerPickupPending;
 import com.dtech.servicure.utils.Animations;
+import com.dtech.servicure.utils.Utility;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHolder> {
 
     private Activity activity;
-    private ArrayList<PendingModel> pendingModels = new ArrayList<>();
+    private List<BikerPickupPending> bikerPickupPending = new ArrayList<>();
     private int mExpandedPosition = -1;
 
-    public PendingAdapter(Activity activity, ArrayList<PendingModel> pendingModels) {
+    public PendingAdapter(Activity activity, List<BikerPickupPending> bikerPickupPending) {
         this.activity = activity;
-        this.pendingModels = pendingModels;
+        this.bikerPickupPending = bikerPickupPending;
+        for (int i = 0; i < this.bikerPickupPending.size(); i++) {
+            this.bikerPickupPending.get(i).setExpanded(false);
+        }
     }
+
 
     @NonNull
     @Override
@@ -39,21 +45,29 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        PendingModel currData = pendingModels.get(position);
+        BikerPickupPending currData = bikerPickupPending.get(position);
 
-        holder.binding.txtName.setText(currData.getName());
-        holder.binding.txtDate.setText(currData.getDate());
+        holder.binding.txtName.setText(currData.getInsuredName());
+        holder.binding.txtDate.setText(currData.getDateTime());
+        holder.binding.txtClaimId.setText(currData.getClaimRefNo());
+        holder.binding.txtName1.setText(currData.getInsuredName());
+        holder.binding.txtCity.setText(currData.getCity());
+        holder.binding.txtMobileNo.setText(currData.getMobileNumber());
+        holder.binding.txtSIValue.setText(currData.getSumInsured());
+        holder.binding.txtIMEI.setText(currData.getImeiNo());
 
-        int margin8 = activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._8sdp);
-        int margin5 = activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._5sdp);
-        int margin105 = activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._105sdp);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        if (position == (pendingModels.size() - 1)) {
-            params.setMargins(margin8, margin5, margin8, margin105);
-            holder.binding.linMain.setLayoutParams(params);
-        } else {
-            params.setMargins(margin8, margin5, margin8, margin5);
-            holder.binding.linMain.setLayoutParams(params);
+        if (bikerPickupPending.size() > 4) {
+            int margin8 = activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._8sdp);
+            int margin5 = activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._5sdp);
+            int margin105 = activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._105sdp);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (position == (bikerPickupPending.size() - 1)) {
+                params.setMargins(margin8, margin5, margin8, margin105);
+                holder.binding.linMain.setLayoutParams(params);
+            } else {
+                params.setMargins(margin8, margin5, margin8, margin5);
+                holder.binding.linMain.setLayoutParams(params);
+            }
         }
 
         holder.binding.linMain.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +75,12 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
             public void onClick(View view) {
                 Intent intent = new Intent(activity, PendingProcessActivity.class);
                 activity.startActivity(intent);
+            }
+        });
+        holder.binding.imgMakeCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utility.makeCall(activity, currData.getMobileNumber());
             }
         });
 
@@ -73,8 +93,8 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
         holder.binding.imgExpand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean show = toggleLayout(!pendingModels.get(position).isExpanded(), view, holder.binding.linProcess, position);
-                pendingModels.get(position).setExpanded(show);
+                boolean show = toggleLayout(!bikerPickupPending.get(position).isExpanded(), view, holder.binding.linProcess, position);
+                bikerPickupPending.get(position).setExpanded(show);
             }
         });
     }
@@ -92,7 +112,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return pendingModels.size();
+        return bikerPickupPending.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

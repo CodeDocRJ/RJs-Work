@@ -37,6 +37,7 @@
                 android:padding="@dimen/_10sdp">
 
                 <EditText
+                    android:id="@+id/edtNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -49,6 +50,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/txtSend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

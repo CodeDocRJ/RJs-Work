@@ -83,6 +83,7 @@
                 android:text="Claim ID : " />
 
             <TextView
+                android:id="@+id/txtClaimId"
                 style="@style/txtValue"
                 android:text="1982255424754" />
 
@@ -95,6 +96,7 @@
                 android:text="Name : " />
 
             <TextView
+                android:id="@+id/txtName1"
                 style="@style/txtValue"
                 android:text="Rutvik" />
 
@@ -107,6 +109,7 @@
                 android:text="City : " />
 
             <TextView
+                android:id="@+id/txtCity"
                 style="@style/txtValue"
                 android:text="Surat" />
 
@@ -120,15 +123,17 @@
                 android:text="Contact No : " />
 
             <TextView
+                android:id="@+id/txtMobileNo"
                 style="@style/txtValue"
                 android:layout_toEndOf="@+id/txtContactTitle"
                 android:text="1982255424754" />
 
             <ImageView
+                android:id="@+id/imgMakeCall"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_alignParentEnd="true"
-                android:padding="@dimen/_1sdp"
+                android:padding="@dimen/_2sdp"
                 android:src="@drawable/ic_call_only" />
 
         </RelativeLayout>
@@ -140,6 +145,7 @@
                 android:text="SI Value : " />
 
             <TextView
+                android:id="@+id/txtSIValue"
                 style="@style/txtValue"
                 android:text="50000" />
 
@@ -152,6 +158,7 @@
                 android:text="IMEI : " />
 
             <TextView
+                android:id="@+id/txtIMEI"
                 style="@style/txtValue"
                 android:text="0545405455454545" />
 
